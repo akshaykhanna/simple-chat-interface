@@ -25,7 +25,6 @@ const ListChats = ({
   );
 };
 const mapStateToProps = (state) => {
-  debugger;
   return {
     count: state.count,
     chats:  state.chats,

@@ -12,7 +12,6 @@ export function getAllChats() {
       .then((res) => res.json())
       .then((res) => {
         console.log('res:', res);
-        debugger;
         dispatch(setAllChats(res));
       });
   };
