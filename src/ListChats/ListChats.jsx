@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import ChatMessage from '../ChatMessage/ChatMessage';
 import { connect } from 'react-redux';
 import { incrementAsync, decrementAsync } from '../redux/actions/count';
-import { getAllChats } from '../redux/actions/chat';
+import { getAllChats } from '../redux/actions/chats';
 
 const ListChats = ({
   count,
-  chat,
+  chats,
   handleIncrementClick,
   handleDecrementClick,
   getAllChats,
@@ -17,7 +17,7 @@ const ListChats = ({
   return (
     <>
       <h1>ChatList Component {count} </h1>
-      <h5>{JSON.stringify(chat)}</h5>
+      <h5>{JSON.stringify(chats)}</h5>
       <button onClick={handleDecrementClick}>Decrement</button>
       <button onClick={handleIncrementClick}>Increment</button>
       <ChatMessage />
@@ -25,9 +25,10 @@ const ListChats = ({
   );
 };
 const mapStateToProps = (state) => {
+  debugger;
   return {
-    count: state,
-    chat:  state,
+    count: state.count,
+    chats:  state.chats,
   };
 };
 

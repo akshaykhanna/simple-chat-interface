@@ -1,4 +1,4 @@
-import { UPDATE_ALL_CHATS } from '../action-types/chat';
+import { UPDATE_ALL_CHATS } from '../action-types/chats';
 
 export default function chats(state = [], action) {
   switch (action.type) {
