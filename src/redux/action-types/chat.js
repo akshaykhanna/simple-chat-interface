@@ -1,0 +1,1 @@
+export const UPDATE_ALL_CHATS = 'UPDATE_ALL_CHATS';
