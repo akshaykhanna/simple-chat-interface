@@ -16,3 +16,18 @@ export function getAllChats() {
       });
   };
 }
+export function postChat(message, author='akshay') {
+  const url = `${baseAPIUrl}/?token=${token}`;
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message, author })
+};
+  return (dispatch) => {
+    fetch(url, requestOptions)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log('res:', res);
+      });
+  };
+}
