@@ -6,16 +6,14 @@ export const setAllChats = (chats = []) => ({
 });
 
 export function getAllChats() {
-  return setAllChats([{test: 123}, {test: 456}])
-//   debugger;
-//   const url = `${baseAPIUrl}/?token=${token}`;
-//  return dispatch => {
-//   fetch(url)
-//     .then((res) => res.json())
-//     .then((res) => {
-//       console.log('res:', res);
-//       debugger;
-//       dispatch(setAllChats(res));
-//     });
-//  }
+  const url = `${baseAPIUrl}/?token=${token}`;
+  return (dispatch) => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log('res:', res);
+        debugger;
+        dispatch(setAllChats(res));
+      });
+  };
 }
