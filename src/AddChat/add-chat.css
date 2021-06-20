@@ -1,0 +1,14 @@
+.add-chat {
+  /* border: 2px solid red; */
+  display: flex;
+  background-color: #3798D4;
+  padding: 10px 50px;
+  width: 100%;
+}
+.text-box {
+  flex: 4;
+  padding: 5px;
+}
+.send-btn {
+  flex: 1;
+}

@@ -16,7 +16,6 @@ const ListChats = ({
   }, [getAllChats]);
   return (
     <>
-      <h1>ChatList Component {count} </h1>
       <h5>{JSON.stringify(chats)}</h5>
       <button onClick={handleDecrementClick}>Decrement</button>
       <button onClick={handleIncrementClick}>Increment</button>

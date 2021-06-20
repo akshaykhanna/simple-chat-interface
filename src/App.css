@@ -1,10 +1,18 @@
 .App {
-  text-align: center;
   background-image: url("./assets/body-bg.png");
   min-height: 100vh;
+  height: max-content;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
+  position: relative;
+}
+.list {
+  flex: 1;
+}
+.add-chat {
+  position: absolute;
+  bottom: 0;
 }

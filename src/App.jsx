@@ -8,8 +8,8 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <ListChats />
-        <AddChat />
+        <ListChats className="list" />
+        <AddChat className="add-chat"/>
       </div>
     </Provider>
   );
