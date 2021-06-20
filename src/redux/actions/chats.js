@@ -1,4 +1,4 @@
-import { baseAPIUrl, token } from '../../config';
+import { baseAPIUrl } from '../../config';
 import { UPDATE_ALL_CHATS } from '../action-types/chats';
 export const setAllChats = (chats = []) => ({
   type: UPDATE_ALL_CHATS,
@@ -6,8 +6,9 @@ export const setAllChats = (chats = []) => ({
 });
 
 export function getAllChats() {
-  const url = `${baseAPIUrl}/?token=${token}`;
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const token = getState().author.token;
+    const url = `${baseAPIUrl}/?token=${token}`;
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
@@ -16,14 +17,16 @@ export function getAllChats() {
       });
   };
 }
-export function postChat(message, author='akshay') {
-  const url = `${baseAPIUrl}/?token=${token}`;
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message, author })
-};
-  return (dispatch) => {
+export function postChat(message) {
+  return (dispatch, getState) => {
+    const author = getState().author.name;
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, author })
+    };
+    const token = getState().author.token;
+    const url = `${baseAPIUrl}/?token=${token}`;
     fetch(url, requestOptions)
       .then((res) => res.json())
       .then((res) => {

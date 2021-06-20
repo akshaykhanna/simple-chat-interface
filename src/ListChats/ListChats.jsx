@@ -3,6 +3,8 @@ import ChatMessage from '../ChatMessage/ChatMessage';
 import { connect } from 'react-redux';
 import { incrementAsync, decrementAsync } from '../redux/actions/count';
 import { getAllChats } from '../redux/actions/chats';
+import { updateAuthor, updateAuthorToken } from '../redux/actions/author';
+import { AUTHOR, TOKEN } from '../config';
 
 const ListChats = ({
   count,
@@ -10,10 +12,14 @@ const ListChats = ({
   handleIncrementClick,
   handleDecrementClick,
   getAllChats,
+  updateAuthor,
+  updateAuthorToken,
 }) => {
   useEffect(() => {
+    updateAuthor(AUTHOR);
+    updateAuthorToken(TOKEN);
     getAllChats();
-  }, [getAllChats]);
+  }, [getAllChats, updateAuthor, updateAuthorToken]);
   return (
     <>
       <h5>{JSON.stringify(chats)}</h5>
@@ -26,7 +32,7 @@ const ListChats = ({
 const mapStateToProps = (state) => {
   return {
     count: state.count,
-    chats:  state.chats,
+    chats: state.chats,
   };
 };
 
@@ -35,6 +41,8 @@ const mapDispatchToProps = (dispatch) => {
     handleIncrementClick: () => dispatch(incrementAsync),
     handleDecrementClick: () => dispatch(decrementAsync),
     getAllChats: () => dispatch(getAllChats()),
+    updateAuthor: (author) => dispatch(updateAuthor(author)),
+    updateAuthorToken: (token) => dispatch(updateAuthorToken(token)),
   };
 };
 
