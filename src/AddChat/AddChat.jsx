@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { postChat } from '../redux/actions/chats';
+import { getAllChats, postChat } from '../redux/actions/chats';
 import './add-chat.css';
-const AddChat = ({ postMessage }) => {
+const AddChat = ({ postMessage, getAllChats }) => {
   const [msg, setMsg] = useState('');
   console.log(`msg: ${msg}`);
   const setText = (event) => {
     setMsg(event.target.value);
   };
+  const sentMsgAndUpdateChats = () => {
+    postMessage(msg);
+    getAllChats();
+  }
   return (
     <div className="add-chat">
       <input onChange={setText} className="text-box" value={msg}></input>
-      <button onClick={() => postMessage(msg)} className="send-btn">
+      <button onClick={sentMsgAndUpdateChats} className="send-btn">
         Send
       </button>
     </div>
@@ -21,6 +25,7 @@ const AddChat = ({ postMessage }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     postMessage: (msg) => dispatch(postChat(msg)),
+    getAllChats: () => dispatch(getAllChats()),
   };
 };
 
