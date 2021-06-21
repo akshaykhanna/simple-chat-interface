@@ -1,0 +1,7 @@
+.chat-list {
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+  padding: 40px;
+  max-height: 516px;
+  overflow-y: auto;
+}

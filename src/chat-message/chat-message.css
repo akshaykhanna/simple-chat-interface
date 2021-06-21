@@ -1,4 +1,23 @@
 .chat-box {
   border: 2px solid black;
   height: 100px;
+  width:fit-content
 }
+.incomming-msg {
+  margin-top: 10px;
+  border: 2px solid black;
+  height: 100px;
+  display: block;
+  width: 50%;
+  float: left;
+}
+.received-msg {
+  margin-top: 10px;
+  border: 2px solid black;
+  height: 100px;
+  display: block;
+  padding: 0 0 0 10px;
+  vertical-align: top;
+  width: 50%;
+  float: right;
+ }

@@ -5,9 +5,9 @@ import { incrementAsync, decrementAsync } from '../redux/actions/count';
 import { getChats } from '../redux/actions/chats';
 import { updateAuthor, updateAuthorToken } from '../redux/actions/author';
 import { AUTHOR, TOKEN } from '../config';
+import './list-chats.css';
 
 const ListChats = ({
-  count,
   chats,
   handleIncrementClick,
   handleDecrementClick,
@@ -21,12 +21,11 @@ const ListChats = ({
     getChats();
   }, [getChats, updateAuthor, updateAuthorToken]);
   return (
-    <>
-      <h5>{JSON.stringify(chats)}</h5>
-      <button onClick={handleDecrementClick}>Decrement</button>
-      <button onClick={handleIncrementClick}>Increment</button>
-      <ChatMessage />
-    </>
+    <div className="chat-list">
+      {/* <h5>{JSON.stringify(chats)}</h5> */}
+      <ChatMessage  className="incomming-msg" />
+      <ChatMessage isOutgoing className="received-msg" />
+    </div>
   );
 };
 const mapStateToProps = (state) => {
