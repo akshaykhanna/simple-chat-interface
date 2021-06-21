@@ -21,7 +21,7 @@ const ListChats = ({
   return (
     <div className="chat-list">
       {chats.map((chat) => (
-        <ChatMessage chat={chat} />
+        <ChatMessage key={chat._id} chat={chat} />
       ))}
     </div>
   );

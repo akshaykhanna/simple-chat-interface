@@ -1,23 +1,36 @@
+.container-left {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+.container-right {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
 .chat-box {
-  border: 2px solid black;
-  height: 100px;
-  width:fit-content
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: block;
+  color: black;
+  padding: 0 0 0 10px;
+  line-height: 1.3em;
 }
 .incomming-msg {
-  margin-top: 10px;
-  border: 2px solid black;
-  height: 100px;
-  display: block;
-  width: 50%;
-  float: left;
+  min-width: 30%;
+  background-color: white;
 }
-.received-msg {
-  margin-top: 10px;
-  border: 2px solid black;
-  height: 100px;
-  display: block;
-  padding: 0 0 0 10px;
-  vertical-align: top;
-  width: 50%;
+.outgoing-msg {
+  width: 70%;
+  background-color: #FCF6C3;
+ }
+ .author, .timestamp {
+   color: gray ;
+   font-size: small;
+   font-weight: 300;
+ }
+ .outgoing-msg >.timestamp {
   float: right;
+  padding-right: 10px;
  }

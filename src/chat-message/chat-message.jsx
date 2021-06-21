@@ -1,18 +1,23 @@
 import React from 'react';
 import { AUTHOR } from '../config';
 import './chat-message.css';
+import { unixToDateTime } from '../utils';
 
-const ChatMessage = ({
-  chat,
-}) => {
-  const {author, message, timestamp, token, _id} = chat;
+const ChatMessage = ({ chat }) => {
+  const { author, message, timestamp, token, _id } = chat;
   const isOutgoing = author === AUTHOR;
-  const getClassName = () => (!isOutgoing ? 'incomming-msg' : 'received-msg');
+  const getClassNames = () => {
+    const prefix = 'chat-box';
+    const suffix = !isOutgoing ? 'incomming-msg' : 'outgoing-msg';
+    return `${prefix} ${suffix}`;
+  };
   return (
-    <div key={_id} className={getClassName()}>
-      <div className="author">{author}</div>
-      <div className="message">{message}</div>
-      <div className="timestamp">{timestamp}</div>
+    <div className={`${!isOutgoing ? 'container-left' : 'container-right'}`}>
+      <div key={_id} className={getClassNames()}>
+        {!isOutgoing && <div className="author">{author}</div>}
+        <div className="message">{message}</div>
+        <div className="timestamp">{unixToDateTime(timestamp)}</div>
+      </div>
     </div>
   );
 };
