@@ -1,6 +1,6 @@
 import './App.css';
-import ListChats from './ListChats/ListChats';
-import AddChat from './AddChat/AddChat';
+import ListChats from "./list-chats/list-chats";
+import AddChat from './add-chat/add-chat';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 

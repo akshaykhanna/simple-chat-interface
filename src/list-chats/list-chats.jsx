@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import ChatMessage from '../ChatMessage/ChatMessage';
+import ChatMessage from '../chat-message/chat-message';
 import { connect } from 'react-redux';
 import { incrementAsync, decrementAsync } from '../redux/actions/count';
 import { getChats } from '../redux/actions/chats';
