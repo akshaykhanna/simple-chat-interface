@@ -5,10 +5,26 @@ export const setAllChats = (chats = []) => ({
   chats: chats,
 });
 
-export function getAllChats() {
+export function getChats(limit = 0, since = 0) {
+  let params = {};
+  if (limit > 0) {
+    params = { ...params, limit };
+  }
+  if (since > 0) {
+    params = { ...params, since };
+  }
+  return getAllChats(baseAPIUrl, params);
+}
+
+const getQueryParams = (params) =>
+  Object.keys(params)
+    .map((k) => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
+    .join('&');
+
+export function getAllChats(url = baseAPIUrl, params = {}) {
   return (dispatch, getState) => {
     const token = getState().author.token;
-    const url = `${baseAPIUrl}/?token=${token}`;
+    url = `${baseAPIUrl}/?${getQueryParams({ ...params, token })}`;
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
@@ -23,7 +39,7 @@ export function postChat(message) {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message, author })
+      body: JSON.stringify({ message, author }),
     };
     const token = getState().author.token;
     const url = `${baseAPIUrl}/?token=${token}`;
