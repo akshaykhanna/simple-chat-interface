@@ -4,7 +4,6 @@ import { getAllChats, postChat } from '../redux/actions/chats';
 import './add-chat.css';
 const AddChat = ({ postMessage, getAllChats }) => {
   const [msg, setMsg] = useState('');
-  console.log(`msg: ${msg}`);
   const setText = (event) => {
     setMsg(event.target.value);
   };

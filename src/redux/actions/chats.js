@@ -28,7 +28,6 @@ export function getAllChats(url = baseAPIUrl, params = {}) {
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
-        console.log('res:', res);
         dispatch(setAllChats(res));
       });
   };
