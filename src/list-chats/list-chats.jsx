@@ -9,8 +9,6 @@ import './list-chats.css';
 
 const ListChats = ({
   chats,
-  handleIncrementClick,
-  handleDecrementClick,
   getChats,
   updateAuthor,
   updateAuthorToken,
@@ -22,15 +20,14 @@ const ListChats = ({
   }, [getChats, updateAuthor, updateAuthorToken]);
   return (
     <div className="chat-list">
-      {/* <h5>{JSON.stringify(chats)}</h5> */}
-      <ChatMessage  className="incomming-msg" />
-      <ChatMessage isOutgoing className="received-msg" />
+      {chats.map((chat) => (
+        <ChatMessage chat={chat} />
+      ))}
     </div>
   );
 };
 const mapStateToProps = (state) => {
   return {
-    count: state.count,
     chats: state.chats,
   };
 };

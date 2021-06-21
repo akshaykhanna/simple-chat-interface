@@ -2,6 +2,6 @@
   /* display: grid;
   grid-template-columns: 1fr 1fr; */
   padding: 40px;
-  max-height: 516px;
+  max-height: 85vh;
   overflow-y: auto;
 }
