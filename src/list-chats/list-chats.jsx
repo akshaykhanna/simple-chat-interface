@@ -6,12 +6,7 @@ import { updateAuthor, updateAuthorToken } from '../redux/actions/author';
 import { AUTHOR, TOKEN } from '../config';
 import './list-chats.css';
 
-const ListChats = ({
-  chats,
-  getChats,
-  updateAuthor,
-  updateAuthorToken,
-}) => {
+const ListChats = ({ chats, getChats, updateAuthor, updateAuthorToken }) => {
   useEffect(() => {
     updateAuthor(AUTHOR);
     updateAuthorToken(TOKEN);

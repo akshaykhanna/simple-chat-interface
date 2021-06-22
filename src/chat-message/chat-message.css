@@ -9,7 +9,7 @@
   width: 100%;
 }
 .chat-box {
-  border: 1px solid grey;
+  border: 2px solid rgb(128 128 128 / 30%);
   border-radius: 5px;
   margin-bottom: 10px;
   display: block;
