@@ -7,7 +7,6 @@ import { getChats } from '../redux/actions/chats';
 
 const Container = ({ children, updateAuthor, updateAuthorToken, getChats }) => {
   useEffect(() => {
-    debugger;
     updateAuthor(AUTHOR);
     updateAuthorToken(TOKEN);
     getChats();

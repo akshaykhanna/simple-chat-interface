@@ -5,6 +5,24 @@ export const setAllChats = (chats = []) => ({
   chats: chats,
 });
 
+
+
+const getQueryParams = (params) =>
+  Object.keys(params)
+    .map((k) => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
+    .join('&');
+
+function getAllChats(url = baseAPIUrl, params = {}) {
+  return (dispatch, getState) => {
+    const token = getState().author.token;
+    url = `${baseAPIUrl}/?${getQueryParams({ ...params, token })}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((res) => {
+        dispatch(setAllChats(res));
+      });
+  };
+}
 export function getChats(limit = 0, since = 0) {
   let params = {};
   if (limit > 0) {
@@ -16,22 +34,6 @@ export function getChats(limit = 0, since = 0) {
   return getAllChats(baseAPIUrl, params);
 }
 
-const getQueryParams = (params) =>
-  Object.keys(params)
-    .map((k) => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
-    .join('&');
-
-export function getAllChats(url = baseAPIUrl, params = {}) {
-  return (dispatch, getState) => {
-    const token = getState().author.token;
-    url = `${baseAPIUrl}/?${getQueryParams({ ...params, token })}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((res) => {
-        dispatch(setAllChats(res));
-      });
-  };
-}
 export function postChat(message) {
   return (dispatch, getState) => {
     const author = getState().author.name;
@@ -49,3 +51,4 @@ export function postChat(message) {
       });
   };
 }
+

@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { getAllChats, postChat } from '../redux/actions/chats';
+import { getChats, postChat } from '../redux/actions/chats';
 import './add-chat.css';
-const AddChat = ({ postMessage, getAllChats }) => {
+const AddChat = ({ postMessage, getChats }) => {
   const [msg, setMsg] = useState('');
   const setText = (event) => {
     setMsg(event.target.value);
   };
   const sentMsgAndUpdateChats = () => {
     postMessage(msg);
-    getAllChats();
+    setMsg('');
+    getChats();
   }
   return (
     <div className="add-chat">
@@ -24,7 +25,7 @@ const AddChat = ({ postMessage, getAllChats }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     postMessage: (msg) => dispatch(postChat(msg)),
-    getAllChats: () => dispatch(getAllChats()),
+    getChats: () => dispatch(getChats(10)),
   };
 };
 
