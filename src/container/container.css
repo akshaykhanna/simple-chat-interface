@@ -1,0 +1,10 @@
+.conatiner {
+  background-image: url("../assets/body-bg.png");
+  min-height: 100vh;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: calc(10px + 2vmin);
+  position: relative;
+}
