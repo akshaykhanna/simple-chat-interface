@@ -1,5 +1,4 @@
-import './App.css';
-import ListChats from "./list-chats/list-chats";
+import ListChats from './list-chats/list-chats';
 import AddChat from './add-chat/add-chat';
 import Container from './container/container';
 import store from './redux/store';
@@ -9,8 +8,8 @@ function App() {
   return (
     <Provider store={store}>
       <Container>
-        <ListChats className="list" />
-        <AddChat className="add-chat"/>
+        <ListChats />
+        <AddChat />
       </Container>
     </Provider>
   );
