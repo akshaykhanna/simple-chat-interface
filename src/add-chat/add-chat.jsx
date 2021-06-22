@@ -13,7 +13,7 @@ const AddChat = ({ postMessage, getAllChats }) => {
   }
   return (
     <div className="add-chat">
-      <input onChange={setText} className="text-box" value={msg}></input>
+      <input onChange={setText} className="text-box" placeholder="Message" value={msg}></input>
       <button onClick={sentMsgAndUpdateChats} className="send-btn">
         Send
       </button>
