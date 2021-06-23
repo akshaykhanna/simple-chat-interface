@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { AUTHOR, TOKEN } from '../config';
+import { AUTHOR, GET_CHATS_LIMIT, TOKEN } from '../config';
 import './container.css';
 import { updateAuthor, updateAuthorToken } from '../redux/actions/author';
 import { getChats } from '../redux/actions/chats';
+import { getYesterdayUnixTime } from '../utils';
 
 const Container = ({ children, updateAuthor, updateAuthorToken, getChats }) => {
   useEffect(() => {
     updateAuthor(AUTHOR);
     updateAuthorToken(TOKEN);
-    getChats();
+    getChats(GET_CHATS_LIMIT, getYesterdayUnixTime());
   }, [updateAuthor, updateAuthorToken, getChats]);
 
   return <div className="conatiner">{children}</div>;
@@ -24,7 +25,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getChats: () => dispatch(getChats()),
+    getChats: (limit, since) => dispatch(getChats(limit, since)),
     updateAuthor: (author) => dispatch(updateAuthor(author)),
     updateAuthorToken: (token) => dispatch(updateAuthorToken(token)),
   };
