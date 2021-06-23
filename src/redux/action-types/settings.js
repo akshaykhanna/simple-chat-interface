@@ -1,0 +1,2 @@
+export const OPEN_USER_DIALOG = 'OPEN_USER_DIALOG';
+export const CLOSE_USER_DIALOG = 'CLOSE_USER_DIALOG';
