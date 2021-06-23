@@ -4,6 +4,7 @@ import { GET_CHATS_LIMIT } from '../config';
 import { getChats, postChat } from '../redux/actions/chats';
 import './add-chat.css';
 import { getYesterdayUnixTime } from '../utils';
+import UserFormDialog from "../user-form-dialog/user-form-dialog";
 
 const AddChat = ({ postMessage, getChats }) => {
   const [msg, setMsg] = useState('');
@@ -17,6 +18,7 @@ const AddChat = ({ postMessage, getChats }) => {
   }
   return (
     <div className="add-chat">
+      <UserFormDialog />
       <input onChange={setText} className="text-box" placeholder="Message" value={msg}></input>
       <button onClick={sentMsgAndUpdateChats} className="send-btn">
         Send
