@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { GET_CHATS_LIMIT } from '../config';
-import { getChats, postChat } from '../redux/actions/chats';
+import { postChat } from '../redux/actions/chats';
 import './add-chat.css';
-import { getYesterdayUnixTime } from '../utils';
 import UserFormDialog from "../user-form-dialog/user-form-dialog";
 
-const AddChat = ({ postMessage, getChats }) => {
+const AddChat = ({ postMessage }) => {
   const [msg, setMsg] = useState('');
   const setText = (event) => {
     setMsg(event.target.value);
@@ -14,7 +12,6 @@ const AddChat = ({ postMessage, getChats }) => {
   const sentMsgAndUpdateChats = () => {
     postMessage(msg);
     setMsg('');
-    getChats(GET_CHATS_LIMIT, getYesterdayUnixTime());
   }
   return (
     <div className="add-chat">
@@ -30,7 +27,6 @@ const AddChat = ({ postMessage, getChats }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     postMessage: (msg) => dispatch(postChat(msg)),
-    getChats: (limit, since) => dispatch(getChats(limit, since)),
   };
 };
 

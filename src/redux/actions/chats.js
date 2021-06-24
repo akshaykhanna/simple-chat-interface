@@ -1,11 +1,11 @@
-import { baseAPIUrl } from '../../config';
+import { baseAPIUrl, GET_CHATS_LIMIT } from '../../config';
 import { UPDATE_ALL_CHATS } from '../action-types/chats';
+import { getYesterdayUnixTime } from '../../utils';
+
 export const setAllChats = (chats = []) => ({
   type: UPDATE_ALL_CHATS,
   chats: chats,
 });
-
-
 
 const getQueryParams = (params) =>
   Object.keys(params)
@@ -48,7 +48,7 @@ export function postChat(message) {
       .then((res) => res.json())
       .then((res) => {
         console.log('res:', res);
+        dispatch(getChats(GET_CHATS_LIMIT, getYesterdayUnixTime()));
       });
   };
 }
-
