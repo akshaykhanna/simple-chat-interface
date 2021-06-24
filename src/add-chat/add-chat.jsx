@@ -11,10 +11,23 @@ const AddChat = ({ postMessage }) => {
   const sentMsgAndUpdateChats = () => {
     postMessage(msg);
     setMsg('');
-  }
+  };
+
+  const handleKeypress = (e) => {
+    //it triggers by pressing the enter key
+    if (e.charCode === 13) {
+      sentMsgAndUpdateChats();
+    }
+  };
   return (
     <div className="add-chat">
-      <input onChange={setText} className="text-box" placeholder="Message" value={msg}></input>
+      <input
+        onChange={setText}
+        onKeyPress={handleKeypress}
+        className="text-box"
+        placeholder="Message"
+        value={msg}
+      ></input>
       <button onClick={sentMsgAndUpdateChats} className="send-btn">
         Send
       </button>
