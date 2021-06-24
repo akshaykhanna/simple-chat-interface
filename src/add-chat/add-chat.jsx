@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { postChat } from '../redux/actions/chats';
 import './add-chat.css';
-import UserFormDialog from "../user-form-dialog/user-form-dialog";
 
 const AddChat = ({ postMessage }) => {
   const [msg, setMsg] = useState('');
@@ -15,7 +14,6 @@ const AddChat = ({ postMessage }) => {
   }
   return (
     <div className="add-chat">
-      <UserFormDialog />
       <input onChange={setText} className="text-box" placeholder="Message" value={msg}></input>
       <button onClick={sentMsgAndUpdateChats} className="send-btn">
         Send
